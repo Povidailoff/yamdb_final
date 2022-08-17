@@ -6,21 +6,16 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
+from reviews.models import Category, Genre, Review, Title, User
 
-from reviews.models import Category, Genre, User, Review, Title
-from .utils import confirmation_generator
 from .filters import TitleFilter
-from .permissions import (AdminPermission,
-                          IsAdminOrReadOnly,
+from .permissions import (AdminPermission, IsAdminOrReadOnly,
                           IsAuthorAdminModerOrReadOnly)
-from .serializers import (ObtainTokenSerializer,
-                          RegistrationSerializer,
-                          UserSerializer,
-                          CategorySerializer,
-                          GenreSerializer,
-                          TitleSerializer,
-                          ReviewSerializer,
-                          CommentSerializer)
+from .serializers import (CategorySerializer, CommentSerializer,
+                          GenreSerializer, ObtainTokenSerializer,
+                          RegistrationSerializer, ReviewSerializer,
+                          TitleSerializer, UserSerializer)
+from .utils import confirmation_generator
 
 
 class GetPostDeleteViewSet(mixins.CreateModelMixin, mixins.DestroyModelMixin,
